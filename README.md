@@ -1,2 +1,2 @@
 # docker-elk-stack
-ELK stack Dockers for BDE pipelinens
+ELK stack Dockers for BDE pipelines
