@@ -1,0 +1,22 @@
+version: '2'
+services:
+  elasticsearch:
+    image: elasticsearch:2
+    command: elasticsearch -Des.network.host=0.0.0.0
+  logstash:
+    image: logstash:2
+    command: logstash -f /etc/logstash/conf.d/logstash.conf
+    volumes:
+      - ./logstash:/etc/logstash/conf.d
+    ports:
+      - "12201:12201"
+      - "12201:12201/udp"
+  kibana:
+    image: kibana:4
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+networks:
+  default:
+    driver: overlay
