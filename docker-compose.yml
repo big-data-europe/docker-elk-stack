@@ -4,10 +4,8 @@ services:
     image: elasticsearch:2
     command: elasticsearch -Des.network.host=0.0.0.0
   logstash:
-    image: logstash:2
+    image: bde2020/logstash:latest
     command: logstash -f /etc/logstash/conf.d/logstash.conf
-    volumes:
-      - ./logstash:/etc/logstash/conf.d
     ports:
       - "12201:12201"
       - "12201:12201/udp"
